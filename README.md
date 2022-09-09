@@ -1,22 +1,24 @@
 #テーブル設計
 ## users テーブル
-| Column              | Type     | Option                   |
+| Column             | Type     | Option                    |
 | -------            | ------   |  ------                   |
-| nickname           | string   | null:false, unique: true  |
-| email              | string   | null:false                |
+| nickname           | string   | null:false                |
+| email              | string   | null:false,  unique: true |
 | encrypted_password | string   | null:false                |
 | first_name         | string   | null:false                |
 | last_name          | string   | null:false                |
-| birth              | integer  |  null:false               | 
+| birth              | date     | null:false                | 
+| first_name_kana    | string   | null:false                |
+| last_name_kana     | string   | null:false                |
+
 ### association
 - has_many :buyers
 - has_many :items
 
-## buyerテーブル
+## buyersテーブル
 | Colmn    | Type       | Option               |
-| ------   | -----         | ------            |
-| buy_item | references | foreign_key: true    |
-| buyer    | references |  foreign_key: true   |
+| ------   | -----      | ------               |
+| item     | references | foreign_key: true    |
 | user     | references | foreign_key: true    |
 
 
@@ -33,11 +35,12 @@
 
 | Column         | Type       | Option                        |
 | -----          | ----       |  ------                       |
-| post_code      | integer    | null:false                    |
-| prefectures    | string     | null:false                    |
+| post_code      | string     | null:false                    |
+| region         | string     | null:false                    |
 | manicipalities | string     | null:false                    |
 | address        | string     | null: false                   | 
 | building       | string     |                               | 
+| phone_number   | string     | null: false                   |
 | buyer          | references | null:false, foreign_key: true |
 
 ### association
@@ -46,17 +49,17 @@
 
 ## items テーブル
 
-| Column        | Type       | Option            |
-| ------        | -----      | ------            |
-| name          | string     | null: false       |
-| infomation    | text       | null: false       |
-| category      | string     | null:false        |  
-| condition     | string     | null: false       | 
-| postage       | string     | null: false       | 
-| region        | string     | null: false       | 
-| shipping_days | integer    | null: false       |
-| price         | integer    | null:false        |
-| seller        | references | foreign_key: true | 
+| Column           | Type        | Option            |
+| ------           | -----       | ------            |
+| name             | string      | null: false       |
+| infomation       | text        | null: false       |
+| category_id      | integer     | null: false       |  
+| condition_id     | integer     | null: false       | 
+| postage_id       | integer     | null: false       | 
+| region_id        | integer     | null: false       | 
+| shipping_days_id | integer     | null: false       |
+| price            | integer     | null:false        |
+| user             | references  | foreign_key: true | 
 
 ## association
 
