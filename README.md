@@ -36,7 +36,7 @@
 | Column         | Type       | Option                        |
 | -----          | ----       |  ------                       |
 | post_code      | string     | null:false                    |
-| region         | string     | null:false                    |
+| region_id      | string     | null:false                    |
 | manicipalities | string     | null:false                    |
 | address        | string     | null: false                   | 
 | building       | string     |                               | 
