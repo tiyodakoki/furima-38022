@@ -17,7 +17,7 @@ RSpec.describe "ユーザー新規登録", type: :system do
       fill_in 'last-name', with: @user.last_name
       fill_in 'first-name-kana', with: @user.first_name_kana
       fill_in 'last-name-kana', with: @user.last_name_kana
-      fill_in 'birth-date', with: @user.birth
+      select  'birth-date', from: @user.birth
       expect{
         find('input[name="commit"]').click
       }.to change {User.count}.by(1)
