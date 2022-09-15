@@ -62,7 +62,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Region can't be blank")
       end
       it 'region_idが1では登録出来ない' do
-        @item.region_id = ''
+        @item.region_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Region can't be blank")
       end
@@ -97,6 +97,11 @@ RSpec.describe Item, type: :model do
         @item.price = 10_000_000_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
+      end
+      it 'userが紐づいていないと登録出来ない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
