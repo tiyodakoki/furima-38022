@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "ユーザー新規登録", type: :system do
+RSpec.describe 'ユーザー新規登録', type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
@@ -18,14 +18,13 @@ RSpec.describe "ユーザー新規登録", type: :system do
       fill_in 'first-name-kana', with: @user.first_name_kana
       fill_in 'last-name-kana', with: @user.last_name_kana
       select  'birth-date', from: @user.birth
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change {User.count}.by(1)
+      end.to change { User.count }.by(1)
       expect(current_path).to eq(root_path)
       expect(page).to have_content('ログアウト')
       expect(page).to have_no_content('新規登録')
       expect(page).to have_no_content('ログイン')
     end
-  end 
-
+  end
 end

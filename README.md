@@ -52,7 +52,7 @@
 | Column           | Type        | Option            |
 | ------           | -----       | ------            |
 | name             | string      | null: false       |
-| infomation       | text        | null: false       |
+| information      | text        | null: false       |
 | category_id      | integer     | null: false       |  
 | condition_id     | integer     | null: false       | 
 | postage_id       | integer     | null: false       | 
