@@ -23,10 +23,10 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
+    set_item
 
-    if @item.update(item_params)
-      redirect_to item_path method: :show
+    if set_item
+      redirect_to item_path(@item.id)
 
     else
       render 'edit'
@@ -38,6 +38,10 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :image, :information, :category_id, :condition_id, :postage_id, :region_id,
