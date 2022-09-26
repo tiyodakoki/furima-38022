@@ -8,7 +8,7 @@ class CreateAddresses < ActiveRecord::Migration[6.0]
       t.string     :address,        null: false
       t.string     :phone_number,   null: false
       t.string     :building
-      t.references :buyer,          foreign_key: true
+      t.references :buyer,          null: false, foreign_key: true
 
 
 
