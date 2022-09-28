@@ -20,9 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.buyer.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.buyer.present?
   end
 
   def update
