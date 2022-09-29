@@ -4,9 +4,10 @@ RSpec.describe BuyerAddress, type: :model do
   describe '商品購入' do
     before do
       @user = FactoryBot.create(:user)
-      #  @item = FactoryBot.create(:item)
+      @item = FactoryBot.build(:item)
+      @item.save
 
-      @buyer_address = FactoryBot.build(:buyer_address, user_id: @user.id, item_id: '3')
+      @buyer_address = FactoryBot.build(:buyer_address, user_id: @user.id, item_id: @item.id)
     end
     context '商品購入できるとき' do
       it '必要な情報があるとき' do
@@ -72,6 +73,16 @@ RSpec.describe BuyerAddress, type: :model do
         @buyer_address.token = nil
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'user_id（購入者）が空だと購入できない' do
+        @buyer_address.user_id = nil
+        @buyer_address.valid?
+        expect(@buyer_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_id（購入商品）が空だと購入できない' do
+        @buyer_address.item_id = nil
+        @buyer_address.valid?
+        expect(@buyer_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
