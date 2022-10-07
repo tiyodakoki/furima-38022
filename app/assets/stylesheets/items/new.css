@@ -227,3 +227,11 @@
 .inc {
   font-size: 13px;
 }
+/* プレビュー画像 */
+.preview-image{
+  height: 100px;
+  width: 200px;
+  /* 縦横比を保ったまま、画像を縦横100pxのサイズに収めるプロパティです */
+  object-fit: contain;
+  margin-top: 10px;
+}
