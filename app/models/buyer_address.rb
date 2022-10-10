@@ -4,13 +4,13 @@ class BuyerAddress
 
   with_options presence: true do
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
-    validates :region_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :region_id, numericality: { other_than: 1, message: "を入力してください" }
     validates :manicipalities
     validates :address
     validates :phone_number, numericality: { only_integer: true }, length: { minimum: 10, maximum: 11 }
     validates :user_id
     validates :item_id
-    validates :token
+    validates :token           
   end
 
   def save
